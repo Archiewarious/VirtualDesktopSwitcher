@@ -3,6 +3,7 @@
 All notable changes to this project are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
+While the version is `0.x`, the project is in early development and anything may change.
 
 ## [0.1.0-beta] - 2026-07-05
 
