@@ -1,0 +1,12 @@
+# Build output (distribute via GitHub Releases, not the repo)
+/dist/
+
+# Downloaded Ahk2Exe compiler and staging
+/.tools/
+/.staging/
+
+# User-specific runtime settings
+settings.ini
+
+# Archives
+*.zip
