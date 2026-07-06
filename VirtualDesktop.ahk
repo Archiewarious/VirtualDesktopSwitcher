@@ -2,7 +2,7 @@
 #SingleInstance Force
 
 ; ============================================================================
-; Virtual Desktop Switcher v0.1.0-beta
+; Virtual Desktop Switcher v0.1.1-beta
 ; Переключение виртуальных рабочих столов Windows по горячим клавишам,
 ; с оверлеем и переносом окон. Настройка клавиш — из меню в трее.
 ;
@@ -16,7 +16,7 @@
 ; https://github.com/Ciantic/VirtualDesktopAccessor
 ; ============================================================================
 
-VERSION := "0.1.0-beta"
+VERSION := "0.1.1-beta"
 
 ; ---- Константы оверлея/таймингов ----
 OVERLAY_ALPHA       := 230    ; стартовая непрозрачность оверлея
@@ -269,7 +269,9 @@ MoveActiveWindowToDesktop(n) {
     }
     if (n >= DesktopCount())
         return
-    hwnd := WinGetID("A")               ; при фокусе на рабочем столе вернёт 0
+    try hwnd := WinGetID("A")           ; нет активного окна (фокус на рабочем столе) → TargetError
+    catch
+        return
     if !hwnd
         return
     ; окно не на текущем столе (незавершённое асинхронное переключение) — не трогаем
@@ -286,7 +288,9 @@ MoveAndFollowToDesktop(n) {
     cur := DllCall(GetCurrentDesktopNumber, "Int")
     if (n == cur || n >= DesktopCount())
         return
-    hwnd := WinGetID("A")
+    try hwnd := WinGetID("A")
+    catch
+        return
     if !hwnd
         return
     if (DllCall(GetWindowDesktopNumber, "Ptr", hwnd, "Int") != cur)

@@ -5,9 +5,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 While the version is `0.x`, the project is in early development and anything may change.
 
-## [0.1.0-beta] - 2026-07-05
+## [0.1.1-beta] - 2026-07-05
 
-First public beta release.
+First public beta release. (0.1.0-beta was pulled before use — it crashed with
+"Target window not found" when moving a window while none was active.)
 
 ### Added
 - Switch desktops with `Alt+1…9`, move the active window with `Ctrl+Alt+1…9`,
@@ -35,5 +36,8 @@ First public beta release.
   switches; stale focus timers are cancelled on rapid switching.
 - Desktop-count guard: hotkeys for non-existent desktops no longer no-op while
   the overlay falsely reports success.
+- Moving/following a window while no window is active (e.g. focus on the
+  desktop) no longer crashes with "Target window not found" — the move is
+  simply skipped.
 
-[0.1.0-beta]: https://github.com/Archiewarious/VirtualDesktopSwitcher/releases/tag/v0.1.0-beta
+[0.1.1-beta]: https://github.com/Archiewarious/VirtualDesktopSwitcher/releases/tag/v0.1.1-beta
